@@ -1,6 +1,7 @@
 package com.solvd.laba.qa.carina.demo.regression.esg;
 
-import com.solvd.laba.qa.carina.demo.gui.pages.common.WalmartHomePageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
+
 import com.zebrunner.carina.core.IAbstractTest;
 import com.solvd.laba.qa.carina.demo.websocket.EndpointUtils;
 import org.slf4j.Logger;
@@ -33,7 +34,7 @@ public class ClipboardTest implements IAbstractTest {
 
     @Test
     public void clipboardWriteTest() throws IOException, URISyntaxException {
-        WalmartHomePageBase walmartHomePageBase = initPage(getDriver(), WalmartHomePageBase.class);
+        HomePageBase walmartHomePageBase = initPage(getDriver(), HomePageBase.class);
         walmartHomePageBase.open();
         Assert.assertTrue(walmartHomePageBase.isPageOpened(), "Walmart Home page is not opened");
         LOGGER.info("WalmartHomePage is opened.");

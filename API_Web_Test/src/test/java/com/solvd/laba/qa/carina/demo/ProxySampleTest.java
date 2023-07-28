@@ -1,8 +1,9 @@
 package com.solvd.laba.qa.carina.demo;
 
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.AllDepartmentsPage;
+import com.solvd.laba.qa.carina.demo.gui.pages.desktop.HomePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.StoreDirectoryPage;
-import com.solvd.laba.qa.carina.demo.gui.pages.desktop.WalmartHomePage;
+
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.utils.R;
@@ -56,7 +57,7 @@ public class ProxySampleTest implements IAbstractTest {
                 Proxy.ProxyType.MANUAL,
                 "Type of the Selenium Proxy should be 'MANUAL'.");
 
-        WalmartHomePage walmartHomePage = new WalmartHomePage(getDriver());
+        HomePage walmartHomePage = new HomePage(getDriver());
         walmartHomePage.open();
         Assert.assertTrue(walmartHomePage.isPageOpened(), "Home page is not opened!");
         AllDepartmentsPage allDepartmentsPage = walmartHomePage.getFooterWalmartMenu().openAllDepartmentsPage();
@@ -76,7 +77,7 @@ public class ProxySampleTest implements IAbstractTest {
                 "Type of the Selenium Proxy should be 'DIRECT'.");
 
 
-        WalmartHomePage walmartHomePage = new WalmartHomePage(getDriver());
+        HomePage walmartHomePage = new HomePage(getDriver());
         walmartHomePage.open();
         Assert.assertTrue(walmartHomePage.isPageOpened(), "Home page is not opened!");
 
@@ -115,7 +116,7 @@ public class ProxySampleTest implements IAbstractTest {
 
 
 
-        WalmartHomePage walmartHomePage = new WalmartHomePage(getDriver());
+        HomePage walmartHomePage = new HomePage(getDriver());
         walmartHomePage.open();
         Assert.assertTrue(walmartHomePage.isPageOpened(), "Home page is not opened!");
         AllDepartmentsPage allDepartmentsPage = walmartHomePage.getFooterWalmartMenu().openAllDepartmentsPage();
@@ -136,7 +137,7 @@ public class ProxySampleTest implements IAbstractTest {
                 "Type of the Selenium Proxy should be 'SYSTEM'.");
 
 
-        WalmartHomePage walmartHomePage = new WalmartHomePage(getDriver());
+        HomePage walmartHomePage = new HomePage(getDriver());
         walmartHomePage.open();
         Assert.assertTrue(walmartHomePage.isPageOpened(), "Home page is not opened!");
 

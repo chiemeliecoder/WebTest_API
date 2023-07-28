@@ -2,8 +2,9 @@ package com.solvd.laba.qa.carina.demo;
 
 import com.solvd.laba.qa.carina.demo.gui.components.footer.FooterWalmartMenuBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.AllDepartmentsPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.StoreDirectoryPageBase;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.WalmartHomePageBase;
+
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
@@ -20,14 +21,14 @@ import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 public class WebSampleSingleDriver implements IAbstractTest {
 
 
-    private WalmartHomePageBase walmartHomePageBase = null;
-    private AllDepartmentsPageBase allDepartmentsPage = null;
-    private StoreDirectoryPageBase storeDirectoryPage = null;
+    private HomePageBase walmartHomePageBase;
+    private AllDepartmentsPageBase allDepartmentsPage;
+    private StoreDirectoryPageBase storeDirectoryPage;
 
 
     @BeforeSuite
     public void startWalmartDriver(){
-        walmartHomePageBase = initPage(getDriver(), WalmartHomePageBase.class);
+        walmartHomePageBase = initPage(getDriver(), HomePageBase.class);
     }
 
 

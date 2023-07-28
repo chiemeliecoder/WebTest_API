@@ -1,6 +1,7 @@
 package com.solvd.laba.qa.carina.demo;
 
-import com.solvd.laba.qa.carina.demo.gui.pages.common.WalmartHomePageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
+
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -24,14 +25,14 @@ public class WebMultipleBrowserTest implements IAbstractTest {
     @Test
     @MethodOwner(owner = "cezeokeke")
     public void multipleBrowserWalmartTest() {
-        WalmartHomePageBase chromeHomePage = initPage(getDriver(CHROME_DRIVER_NAME,
-            new ChromeCapabilities().getCapability("Chrome Test")), WalmartHomePageBase.class);
+        HomePageBase chromeHomePage = initPage(getDriver(CHROME_DRIVER_NAME,
+            new ChromeCapabilities().getCapability("Chrome Test")), HomePageBase.class);
 
         chromeHomePage.open();
         Assert.assertTrue(chromeHomePage.isPageOpened(), "Chrome home page is not opened!");
 
-        WalmartHomePageBase firefoxHomePage = initPage(getDriver(FIREFOX_DRIVER_NAME,
-            new FirefoxCapabilities().getCapability("Firefox Test")), WalmartHomePageBase.class);
+        HomePageBase firefoxHomePage = initPage(getDriver(FIREFOX_DRIVER_NAME,
+            new FirefoxCapabilities().getCapability("Firefox Test")), HomePageBase.class);
 
         firefoxHomePage.open();
         Assert.assertTrue(firefoxHomePage.isPageOpened(), "Firefox home page is not opened!");

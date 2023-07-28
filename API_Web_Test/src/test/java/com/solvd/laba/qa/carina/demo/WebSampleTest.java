@@ -1,12 +1,27 @@
 package com.solvd.laba.qa.carina.demo;
 
+import static org.testng.AssertJUnit.assertEquals;
+
 import com.solvd.laba.qa.carina.demo.gui.components.GenreItem;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.AllDepartmentsPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.DepartmentPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.StoreDirectoryPageBase;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.WalmartHomePageBase;
+
+import com.solvd.laba.qa.carina.demo.gui.pages.desktop.HomePage;
+import com.zebrunner.agent.core.annotation.TestLabel;
+import com.zebrunner.carina.core.registrar.tag.Priority;
+import com.zebrunner.carina.core.registrar.tag.TestPriority;
+import java.time.Duration;
 import java.util.List;
 
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -21,12 +36,44 @@ import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
  */
 public class WebSampleTest implements IAbstractTest {
 
+
     @Test
     @MethodOwner(owner = "cezeokeke")
+    @TestPriority(Priority.P1)
+    @TestLabel(name = "feature", value = { "web", "regression" })
+    public void testSeleniumFirst() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+
+        String title = driver.getTitle();
+        assertEquals("Web form", title);
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
+
+        WebElement textBox = driver.findElement(By.name("my-text"));
+        WebElement submitButton = driver.findElement(By.cssSelector("button"));
+
+        textBox.sendKeys("Selenium");
+        submitButton.click();
+
+        WebElement message = driver.findElement(By.id("message"));
+        String value = message.getText();
+        assertEquals("Received!", value);
+
+        driver.quit();
+    }
+
+    @Test
+    @MethodOwner(owner = "cezeokeke")
+    @TestLabel(name = "feature", value = { "web", "regression" })
     public void testWalmartHomePage() {
-        WalmartHomePageBase walmartHomePageBase = initPage(getDriver(), WalmartHomePageBase.class);
+        HomePage walmartHomePageBase = new HomePage(getDriver());
         walmartHomePageBase.open();
         Assert.assertTrue(walmartHomePageBase.isPageOpened(), "Walmart Home page is not opened");
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertAll();
+
+
     }
 
 
@@ -34,7 +81,7 @@ public class WebSampleTest implements IAbstractTest {
     @Test
     @MethodOwner(owner = "cezeokeke")
     public void testAllDepartments(){
-        WalmartHomePageBase walmartHomePageBase = initPage(getDriver(), WalmartHomePageBase.class);
+        HomePageBase walmartHomePageBase = initPage(getDriver(), HomePageBase.class);
         walmartHomePageBase.open();
         Assert.assertTrue(walmartHomePageBase.isPageOpened(), "Walmart Home page is not opened");
 
@@ -46,7 +93,7 @@ public class WebSampleTest implements IAbstractTest {
     @Test
     @MethodOwner(owner = "cezeokeke")
     public void testStoreDirectory(){
-        WalmartHomePageBase walmartHomePageBase = initPage(getDriver(), WalmartHomePageBase.class);
+        HomePageBase walmartHomePageBase = initPage(getDriver(), HomePageBase.class);
         walmartHomePageBase.open();
         Assert.assertTrue(walmartHomePageBase.isPageOpened(), "Walmart Home page is not opened");
 
@@ -59,7 +106,7 @@ public class WebSampleTest implements IAbstractTest {
     @Test
     @MethodOwner(owner = "cezeokeke")
     public void testDepartment(){
-        WalmartHomePageBase walmartHomePageBase = initPage(getDriver(), WalmartHomePageBase.class);
+        HomePageBase walmartHomePageBase = initPage(getDriver(), HomePageBase.class);
         walmartHomePageBase.open();
         Assert.assertTrue(walmartHomePageBase.isPageOpened(), "Walmart Home page is not opened");
 

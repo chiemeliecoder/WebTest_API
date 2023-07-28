@@ -104,6 +104,23 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.5.3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.10.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>7.6.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -149,7 +166,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.1.0</version>
 				<configuration>
-					<argLine>-javaagent:${project.build.directory}/agent/zebrunner-agent.jar</argLine>
+<!--					<argLine>-javaagent:${project.build.directory}/agent/zebrunner-agent.jar</argLine>-->
 					<useSystemClassLoader>false</useSystemClassLoader>
 					<suiteXmlFiles>
 						<suiteXmlFile>${project.build.directory}/test-classes/testng_suites/${suite}.xml</suiteXmlFile>

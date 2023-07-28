@@ -1,7 +1,7 @@
 package com.solvd.laba.qa.carina.demo.regression.esg;
 
 import com.github.kklisura.cdt.services.ChromeDevToolsService;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.WalmartHomePageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.webdriver.DriverHelper;
 import org.slf4j.Logger;
@@ -16,7 +16,7 @@ public class DevToolsTest implements IAbstractTest {
 
     @Test
     public void devToolsTest() {
-        WalmartHomePageBase walmartHomePage = initPage(getDriver(), WalmartHomePageBase.class);
+        HomePageBase walmartHomePage = initPage(getDriver(), HomePageBase.class);
         walmartHomePage.open();
         Assert.assertTrue(walmartHomePage.isPageOpened(), "Home page is not opened");
         DriverHelper driverHelper = new DriverHelper(getDriver());

@@ -1,6 +1,7 @@
 package com.solvd.laba.qa.carina.demo.regression.esg;
 
-import com.solvd.laba.qa.carina.demo.gui.pages.common.WalmartHomePageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
+
 import com.zebrunner.carina.core.IAbstractTest;
 import com.solvd.laba.qa.carina.demo.utils.ArtifactUtils;
 import com.zebrunner.carina.utils.R;
@@ -23,7 +24,7 @@ public class ArtifactTest implements IAbstractTest {
 
     @Test
     public void artifactTest() throws IOException {
-        WalmartHomePageBase walmartHomePageBase = initPage(getDriver(), WalmartHomePageBase.class);
+        HomePageBase walmartHomePageBase = initPage(getDriver(), HomePageBase.class);
         walmartHomePageBase.open();
         Assert.assertTrue(walmartHomePageBase.isPageOpened(), "Walmart Home page is not opened");
 
@@ -52,7 +53,7 @@ public class ArtifactTest implements IAbstractTest {
     @Test
     public void mitmDumpArtifactTest() throws IOException {
         R.CONFIG.put("proxy_type", "Zebrunner", true);
-        WalmartHomePageBase walmartHomePageBase = initPage(getDriver(), WalmartHomePageBase.class);
+        HomePageBase walmartHomePageBase = initPage(getDriver(), HomePageBase.class);
         walmartHomePageBase.open();
         Assert.assertTrue(walmartHomePageBase.isPageOpened(), "Walmart Home page is not opened");
 

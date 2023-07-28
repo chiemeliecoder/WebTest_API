@@ -1,6 +1,7 @@
 package com.solvd.laba.qa.carina.demo.regression.esg;
 
-import com.solvd.laba.qa.carina.demo.gui.pages.common.WalmartHomePageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
+
 import com.zebrunner.carina.core.IAbstractTest;
 import com.solvd.laba.qa.carina.demo.websocket.WebsocketClientEndpoint;
 import com.zebrunner.carina.utils.R;
@@ -27,7 +28,7 @@ public class VNCTest implements IAbstractTest {
     @Test
     public void vncTest() throws URISyntaxException {
         R.CONFIG.put("capabilities.zebrunner:enableVNC", "true", true);
-        WalmartHomePageBase walmartHomePage = initPage(getDriver(), WalmartHomePageBase.class);
+        HomePageBase walmartHomePage = initPage(getDriver(), HomePageBase.class);
         walmartHomePage.open();
         Assert.assertTrue(walmartHomePage.isPageOpened(), "Home page is not opened");
 

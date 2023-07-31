@@ -5,7 +5,10 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class AllDepartmentsPageBase extends AbstractPage {
 
-  public AllDepartmentsPageBase(WebDriver driver) { super(driver); }
+  public AllDepartmentsPageBase(WebDriver driver) {
+    super(driver);
+    setPageURL("/all-departments");
+  }
 
   public abstract DepartmentPageBase selectDepartment(String departmentName);
 }

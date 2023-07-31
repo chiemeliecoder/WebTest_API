@@ -18,3 +18,7 @@ Feature: Walmart Website Testing
     When I click on the "Store Directory" link
     Then I should see a list of all store locations
     And each store should have address, phone number, and working hours
+
+
+
+

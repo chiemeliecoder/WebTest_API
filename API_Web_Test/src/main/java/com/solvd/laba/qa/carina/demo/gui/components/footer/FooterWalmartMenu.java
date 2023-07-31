@@ -9,10 +9,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class FooterWalmartMenu extends FooterWalmartMenuBase{
 
-  @FindBy(linkText = "All Departments")
+  @FindBy(linkText = "FAQ")
   private ExtendedWebElement allDepartmentsLink;
 
-  @FindBy(linkText = "Store Directory")
+  @FindBy(linkText = "Sign In")
   private ExtendedWebElement storeDirectoryLink;
 
   public FooterWalmartMenu(WebDriver driver, SearchContext searchContext) {

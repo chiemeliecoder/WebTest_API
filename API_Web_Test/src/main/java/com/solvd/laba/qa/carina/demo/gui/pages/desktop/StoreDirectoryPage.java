@@ -19,9 +19,9 @@ public class StoreDirectoryPage extends StoreDirectoryPageBase {
   private ExtendedWebElement storeDirPageTitle;
 
   public StoreDirectoryPage(WebDriver driver) {
-
     super(driver);
-    setPageURL("/store-directory"); //the slash changes to a - is it okay it is like this?
+    setUiLoadedMarker(storeDirPageTitle);
+//    setPageURL("/store-directory"); //the slash changes to a - is it okay it is like this?
   }
 
 

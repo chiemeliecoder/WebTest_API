@@ -6,7 +6,10 @@ import org.openqa.selenium.WebDriver;
 public abstract class StoreDirectoryPageBase extends AbstractPage {
 
 
-  public StoreDirectoryPageBase(WebDriver driver) { super(driver); }
+  public StoreDirectoryPageBase(WebDriver driver) {
+    super(driver);
+    setPageURL("/store-directory");
+  }
 
   public abstract StatePageBase selectState(String stateName);
 }

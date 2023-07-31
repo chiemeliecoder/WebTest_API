@@ -28,7 +28,7 @@ public class GenreItem extends AbstractUIObject implements ICustomTypePageFactor
 
 
   public GenrePageBase openGenrePage(){
-    genrePicture.click();
+    genreLink.click();
     return initPage(driver,GenrePageBase.class);
   }
 }

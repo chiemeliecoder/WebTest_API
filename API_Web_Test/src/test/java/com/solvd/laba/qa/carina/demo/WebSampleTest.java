@@ -5,6 +5,7 @@ import static org.testng.AssertJUnit.assertEquals;
 import com.solvd.laba.qa.carina.demo.gui.components.GenreItem;
 import com.solvd.laba.qa.carina.demo.gui.components.MerchItem;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.AllDepartmentsPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.CartPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManModelInfoPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.DepartmentPageBase;
@@ -84,6 +85,26 @@ public class WebSampleTest implements IAbstractTest {
         softAssert.assertEquals(wpb.readWishlistName(), "Final Fantasy XVI - Cidolfus Telamon Bring Arts Action Figure", "Invalid name info!");
         softAssert.assertAll();
 
+
+    }
+
+    @Test
+    @MethodOwner(owner = "cezeokeke")
+    @TestPriority(Priority.P3)
+    @TestLabel(name = "feature", value = { "web", "regression" })
+    public void testCart() throws InterruptedException {
+        HomePageBase crunchyHomePageBase = initPage(getDriver(), HomePageBase.class);
+        crunchyHomePageBase.open();
+
+        ChainsawManBasePage chainsawMan = crunchyHomePageBase.selectChainsaw("CHAINSAW MAN MERCH");
+
+        ChainsawManModelInfoPageBase productInfoPage = chainsawMan.selectModel("Chainsaw Man - Power Otaku Lamp");
+
+        CartPageBase cPB = productInfoPage.addedToCartItems();
+
+        productInfoPage.shopCart();
+
+        productInfoPage.cartFull();
 
     }
 

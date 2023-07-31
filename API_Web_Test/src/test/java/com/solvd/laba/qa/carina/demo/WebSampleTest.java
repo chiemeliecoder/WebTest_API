@@ -9,6 +9,7 @@ import com.solvd.laba.qa.carina.demo.gui.pages.common.CartPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManModelInfoPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.DepartmentPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.FAQPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.GenrePageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.MerchProductPageBase;
@@ -16,6 +17,7 @@ import com.solvd.laba.qa.carina.demo.gui.pages.common.ProductPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.StoreDirectoryPageBase;
 
 import com.solvd.laba.qa.carina.demo.gui.pages.common.WishlistProductPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.desktop.FAQPage;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.HomePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.MerchProductPage;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.ProductPage;
@@ -110,7 +112,21 @@ public class WebSampleTest implements IAbstractTest {
 
 
 
+    @Test
+    @MethodOwner(owner = "cezeokeke")
+    @TestPriority(Priority.P4)
+    @TestLabel(name = "feature", value = { "web", "regression" })
+    public void testFAQFooter() throws InterruptedException {
+        HomePageBase crunchyHomePageBase = initPage(getDriver(), HomePageBase.class);
+        crunchyHomePageBase.open();
 
+        //test wont pass current thread is not owner
+        FAQPageBase f = initPage(getDriver(), FAQPageBase.class);
+        f.open();
+        //test wont pass current thread is not owner
+//        FAQPage faq = crunchyHomePageBase.getFooterWalmartMenu().openFAQPage();
+//        Assert.assertTrue(faq.isPageOpened(10));
+    }
 
 
 

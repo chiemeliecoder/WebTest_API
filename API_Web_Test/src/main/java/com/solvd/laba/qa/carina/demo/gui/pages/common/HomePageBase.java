@@ -2,6 +2,7 @@ package com.solvd.laba.qa.carina.demo.gui.pages.common;
 
 import com.solvd.laba.qa.carina.demo.gui.components.MerchItem;
 import com.solvd.laba.qa.carina.demo.gui.components.footer.FooterWalmartMenuBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.desktop.FAQPage;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.MerchProductPage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
@@ -56,6 +57,7 @@ public abstract class HomePageBase extends AbstractPage {
   public abstract List<MerchItem> searchMerch(String searchInput);
 
   public abstract MerchProductPageBase navNewItemSelect();
+
 
   @Override
   public void open() {

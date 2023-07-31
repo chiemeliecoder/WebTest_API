@@ -4,6 +4,7 @@ import com.solvd.laba.qa.carina.demo.gui.components.MerchItem;
 import com.solvd.laba.qa.carina.demo.gui.components.footer.FooterWalmartMenu;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.AllDepartmentsPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManBasePage;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.FAQPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.MerchProductPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.StoreDirectoryPageBase;
@@ -61,6 +62,9 @@ public class HomePage extends HomePageBase {
   @FindBy(xpath = "//div[@class = 'menu-group']//li[@class = 'dropdown-item dropdown']/a")
   private ExtendedWebElement shopAllNewItems;
 
+  @FindBy(xpath = ".//a[@href = 'https://store.crunchyroll.com/help-center.html']")
+  private ExtendedWebElement footerPicks;
+
 
   public HomePage(WebDriver driver) {
     super(driver);
@@ -111,5 +115,6 @@ public class HomePage extends HomePageBase {
     newItems.click();
     return new MerchProductPage(driver);
   }
+
 
 }

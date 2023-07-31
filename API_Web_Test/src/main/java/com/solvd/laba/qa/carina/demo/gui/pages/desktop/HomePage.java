@@ -5,6 +5,7 @@ import com.solvd.laba.qa.carina.demo.gui.components.footer.FooterWalmartMenu;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.AllDepartmentsPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.MerchProductPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.StoreDirectoryPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -47,6 +48,19 @@ public class HomePage extends HomePageBase {
 
   @FindBy(xpath = "//div[@class = 'product']")
   private List<MerchItem> merch;
+
+  @FindBy(xpath = "//nav[@role='navigation']//button")
+  private ExtendedWebElement navigateDiv;
+
+
+  @FindBy(xpath = "//div[@class = 'menu-group']//li[@class = 'nav-item dropdown']/a")
+  private ExtendedWebElement newItems;
+
+
+
+  @FindBy(xpath = "//div[@class = 'menu-group']//li[@class = 'dropdown-item dropdown']/a")
+  private ExtendedWebElement shopAllNewItems;
+
 
   public HomePage(WebDriver driver) {
     super(driver);
@@ -91,5 +105,11 @@ public class HomePage extends HomePageBase {
     return merch;
   }
 
+  @Override
+  public MerchProductPageBase navNewItemSelect(){
+    newItems.hover();
+    newItems.click();
+    return new MerchProductPage(driver);
+  }
 
 }

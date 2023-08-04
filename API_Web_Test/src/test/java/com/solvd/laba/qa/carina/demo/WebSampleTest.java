@@ -44,11 +44,11 @@ public class WebSampleTest implements IAbstractTest {
         String category = "NEW NENDOROIDS";
         CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(category);
 
-        String model = "Jujutsu Kaisen - Suguru Geto Nendoroid (Tokyo Jujutsu High School Ver.)";
+        String model = "Banana Fish - Ash Lynx (Re-run) Nendoroid";
         ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(model);
 
         SoftAssert softAssert = new SoftAssert();
-        String price = "$38.99";
+        String price = "$36.99";
         softAssert.assertEquals(productInfoPage.readProductName(),"","Invalid product info!");
         softAssert.assertEquals(productInfoPage.readProductPrice(),price,"Invalid price info!");
         softAssert.assertAll();
@@ -84,7 +84,7 @@ public class WebSampleTest implements IAbstractTest {
         String category = "NEW NENDOROIDS";
         CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(category);
 
-        String model = "Jujutsu Kaisen - Suguru Geto Nendoroid (Tokyo Jujutsu High School Ver.)";
+        String model = "Banana Fish - Ash Lynx (Re-run) Nendoroid";
         ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(model);
 
         CartPageBase cPB = productInfoPage.addedToCartItems();

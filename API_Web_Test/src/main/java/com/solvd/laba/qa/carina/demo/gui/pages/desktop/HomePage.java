@@ -3,8 +3,7 @@ package com.solvd.laba.qa.carina.demo.gui.pages.desktop;
 import com.solvd.laba.qa.carina.demo.gui.components.MerchItem;
 import com.solvd.laba.qa.carina.demo.gui.components.footer.FooterWalmartMenu;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.AllDepartmentsPageBase;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManBasePage;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.FAQPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.CategoryBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.MerchProductPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.StoreDirectoryPageBase;
@@ -13,10 +12,8 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.Context;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +30,7 @@ public class HomePage extends HomePageBase {
   @FindBy(className = "experience-component experience-commerce_layouts-bannerCarousel")
   private ExtendedWebElement pageColumn;
 
-  @FindBy(xpath = "//div[contains(@class, 'experience-component experience-commerce_assets-multiImagesContainer')]//a")
+  @FindBy(xpath = "//div[contains(@class, 'category-block')]//a")
   private List<ExtendedWebElement> animeLinks;
 
   @FindBy(xpath = "//div[@class='site-search']")
@@ -89,14 +86,14 @@ public class HomePage extends HomePageBase {
 
 
 @Override
- public ChainsawManBasePage selectChainsaw(String name){
+ public CategoryBasePage selectCategory(String name){
    LOGGER.info("selecting '" + name + "' name...");
    for (ExtendedWebElement anime : animeLinks) {
      String currentAnime = anime.getText();
      LOGGER.info("currentBrand: " + currentAnime);
      if (name.equalsIgnoreCase(currentAnime)) {
        anime.click();
-       return initPage(driver, ChainsawManBasePage.class);
+       return initPage(driver, CategoryBasePage.class);
      }
    }
    throw new RuntimeException("Unable to open anime name: " + name);

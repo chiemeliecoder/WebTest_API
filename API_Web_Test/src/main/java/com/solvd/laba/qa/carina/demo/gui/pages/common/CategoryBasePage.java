@@ -5,13 +5,13 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 
-public abstract class ChainsawManBasePage extends AbstractPage {
+public abstract class CategoryBasePage extends AbstractPage {
 
-  public ChainsawManBasePage(WebDriver driver) {
+  public CategoryBasePage(WebDriver driver) {
     super(driver);
   }
 
-  public abstract ChainsawManModelInfoPageBase selectModel(String modelName);
+  public abstract ModelInfoPageBase selectModel(String modelName);
 
   public abstract List<ChainItem> getChainsawManProducts();
 }

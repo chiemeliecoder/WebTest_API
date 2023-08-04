@@ -1,27 +1,26 @@
 package com.solvd.laba.qa.carina.demo.gui.pages.desktop;
 
 import com.solvd.laba.qa.carina.demo.gui.components.ChainItem;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManBasePage;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManModelInfoPageBase;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.CategoryBasePage;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.ModelInfoPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ChainsawManBasePage.class)
-public class ChainsawManPage extends ChainsawManBasePage {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CategoryBasePage.class)
+public class CategoryPage extends CategoryBasePage {
 
   @FindBy(xpath = "//div[contains(@data-pid, '810093653393')]")
   public List<ChainItem> chainsawManProducts;
 
 
-  public ChainsawManPage(WebDriver driver) {
+  public CategoryPage(WebDriver driver) {
     super(driver);
   }
 
-  public ChainsawManModelInfoPageBase selectModel(String modelName){
+  public ModelInfoPageBase selectModel(String modelName){
     for (ChainItem model : chainsawManProducts) {
       if (model.readModel().equalsIgnoreCase(modelName)) {
         return model.openModelPage();

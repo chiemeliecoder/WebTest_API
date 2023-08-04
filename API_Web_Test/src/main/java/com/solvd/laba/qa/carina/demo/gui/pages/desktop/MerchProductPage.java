@@ -1,13 +1,10 @@
 package com.solvd.laba.qa.carina.demo.gui.pages.desktop;
 
-import com.solvd.laba.qa.carina.demo.gui.components.MerchItem;
 import com.solvd.laba.qa.carina.demo.gui.components.NewItem;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.MerchProductPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.WishlistProductPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.locator.Context;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;

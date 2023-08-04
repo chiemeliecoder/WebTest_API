@@ -1,10 +1,9 @@
 package com.solvd.laba.qa.carina.demo.gui.components;
 
-import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManModelInfoPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.ModelInfoPageBase;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
-import javax.xml.xpath.XPath;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -26,8 +25,8 @@ public class ChainItem extends AbstractUIObject implements ICustomTypePageFactor
     return chainLabel.getText();
   }
 
-  public ChainsawManModelInfoPageBase openModelPage() {
+  public ModelInfoPageBase openModelPage() {
     chainLink.click();
-    return initPage(driver, ChainsawManModelInfoPageBase.class);
+    return initPage(driver, ModelInfoPageBase.class);
   }
 }

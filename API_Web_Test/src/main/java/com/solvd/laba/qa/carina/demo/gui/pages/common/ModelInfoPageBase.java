@@ -5,9 +5,9 @@ import com.solvd.laba.qa.carina.demo.gui.pages.desktop.FullCartPage;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
-public abstract class ChainsawManModelInfoPageBase extends AbstractPage {
+public abstract class ModelInfoPageBase extends AbstractPage {
 
-  public ChainsawManModelInfoPageBase(WebDriver driver) {
+  public ModelInfoPageBase(WebDriver driver) {
     super(driver);
   }
 

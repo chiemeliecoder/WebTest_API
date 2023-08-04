@@ -2,15 +2,14 @@ package com.solvd.laba.qa.carina.demo.gui.pages.desktop;
 
 
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CartPageBase;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManBasePage;
-import com.solvd.laba.qa.carina.demo.gui.pages.common.ChainsawManModelInfoPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.ModelInfoPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ChainsawManModelInfoPageBase.class)
-public class ChainsawManModelInfoPage extends ChainsawManModelInfoPageBase {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ModelInfoPageBase.class)
+public class ModelInfoPage extends ModelInfoPageBase {
 
   @FindBy(css = ".product-name-block h1")
   private ExtendedWebElement productInfoLabel;
@@ -30,7 +29,7 @@ public class ChainsawManModelInfoPage extends ChainsawManModelInfoPageBase {
   @FindBy(xpath = "//div[@class = 'minicart-icon']/a")
   private ExtendedWebElement shoppingCart;
 
-  public ChainsawManModelInfoPage(WebDriver driver) {
+  public ModelInfoPage(WebDriver driver) {
     super(driver);
   }
 

@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CategoryBasePage.class)
 public class CategoryPage extends CategoryBasePage {
 
-  @FindBy(xpath = "//div[contains(@data-pid, '810093653393')]")
+  @FindBy(xpath = "//div[contains(@data-pid, '4580590175426')]")
   public List<ChainItem> chainsawManProducts;
 
 

@@ -66,7 +66,7 @@ public class WebSampleTest implements IAbstractTest {
         WishlistProductPageBase wpb = mpb.wishlistProduct();
         wpb.open();
         SoftAssert softAssert = new SoftAssert();
-        String product = "Final Fantasy XVI - Cidolfus Telamon Bring Arts Action Figure";
+        String product = "My Hero Academia -Eijiro Kirishima Ichiban Figure ( Bright Future Ver )";
         softAssert.assertEquals(wpb.readWishlistName(), product, "Invalid name info!");
         softAssert.assertAll();
 
@@ -131,7 +131,7 @@ public class WebSampleTest implements IAbstractTest {
         List<MerchItem> mI = crunchyHomePageBase.searchMerch(searchAnimeMerch);
         SoftAssert softAssert = new SoftAssert();
         for(MerchItem merchItem : mI){
-            System.out.println(merchItem.readProductTitle());
+//            System.out.println(merchItem.readProductTitle());
             softAssert.assertTrue(StringUtils.containsIgnoreCase(merchItem.readProductTitle(), searchAnimeMerch),
                 "Invalid search results for " + merchItem.readProductTitle());
         }

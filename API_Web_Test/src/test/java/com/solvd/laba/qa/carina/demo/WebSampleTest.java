@@ -44,7 +44,7 @@ public class WebSampleTest implements IAbstractTest {
         String category = "NEW NENDOROIDS";
         CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(category);
 
-        String model = "Banana Fish - Ash Lynx (Re-run) Nendoroid";
+        String model = "Jujutsu Kaisen - Suguru Geto Nendoroid (Tokyo Jujutsu High School Ver.)";
         ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(model);
 
         SoftAssert softAssert = new SoftAssert();
@@ -84,7 +84,7 @@ public class WebSampleTest implements IAbstractTest {
         String category = "NEW NENDOROIDS";
         CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(category);
 
-        String model = "Banana Fish - Ash Lynx (Re-run) Nendoroid";
+        String model = "Jujutsu Kaisen - Suguru Geto Nendoroid (Tokyo Jujutsu High School Ver.)";
         ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(model);
 
         CartPageBase cPB = productInfoPage.addedToCartItems();

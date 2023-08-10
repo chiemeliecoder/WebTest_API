@@ -104,11 +104,11 @@ public class WebSampleTest implements IAbstractTest {
         crunchyHomePageBase.open();
 
         //test wont pass current thread is not owner
-//        FAQPageBase f = initPage(getDriver(), FAQPageBase.class);
-//        f.open();
+        FAQPageBase f = initPage(getDriver(), FAQPageBase.class);
+        f.open();
         //test wont pass current thread is not owner
-        FAQPageBase faq = crunchyHomePageBase.getFooterWalmartMenu().openFAQPage();
-        faq.open();
+//        FAQPageBase faq = crunchyHomePageBase.getFooterWalmartMenu().openFAQPage();
+//        faq.open();
 //        Assert.assertTrue(faq.isPageOpened(10));
     }
 

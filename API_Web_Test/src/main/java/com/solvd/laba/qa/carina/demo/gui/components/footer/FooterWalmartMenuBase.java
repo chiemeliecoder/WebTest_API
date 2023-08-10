@@ -1,6 +1,7 @@
 package com.solvd.laba.qa.carina.demo.gui.components.footer;
 
 import com.solvd.laba.qa.carina.demo.gui.pages.common.AllDepartmentsPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.FAQPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.StoreDirectoryPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.FAQPage;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
@@ -15,5 +16,5 @@ public abstract class FooterWalmartMenuBase extends AbstractUIObject {
 
   public abstract AllDepartmentsPageBase openAllDepartmentsPage();
   public abstract StoreDirectoryPageBase openStoreDirectoryPage();
-  public abstract FAQPage openFAQPage() throws InterruptedException;
+  public abstract FAQPageBase openFAQPage()throws InterruptedException;
 }

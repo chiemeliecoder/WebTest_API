@@ -2,6 +2,7 @@ package com.solvd.laba.qa.carina.demo.gui.pages.desktop;
 
 import com.solvd.laba.qa.carina.demo.gui.components.MerchItem;
 import com.solvd.laba.qa.carina.demo.gui.components.footer.FooterWalmartMenu;
+import com.solvd.laba.qa.carina.demo.gui.enums.Category;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.AllDepartmentsPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CategoryBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
@@ -86,15 +87,13 @@ public class HomePage extends HomePageBase {
 
 
 @Override
- public CategoryBasePage selectCategory(String name){
+ public CategoryBasePage selectCategory(Category name){
    LOGGER.info("selecting '" + name + "' name...");
    for (ExtendedWebElement anime : animeLinks) {
      String currentAnime = anime.getText();
      LOGGER.info("currentBrand: " + currentAnime);
-     if (name.equalsIgnoreCase(currentAnime)) {
-       anime.click();
-       return initPage(driver, CategoryBasePage.class);
-     }
+     anime.click();
+     return initPage(driver, CategoryBasePage.class);
    }
    throw new RuntimeException("Unable to open anime name: " + name);
  }

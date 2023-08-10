@@ -10,10 +10,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class ChainItem extends AbstractUIObject implements ICustomTypePageFactory {
 
-  @FindBy(xpath = "//div[@id='product-search-results']//a")
+//  @FindBy(xpath = "//div[@id='product-search-results']//a")
+  // //div[@class='flex-grow-1 product-items-container']//div[@class='product']
+  //  //div[@class='product-tile js-product-tile']
+  @FindBy(xpath = "//div[@class='flex-grow-1 product-items-container']//div[@class='product']")
   private ExtendedWebElement chainLink;
 
-  @FindBy(xpath = ".//a[@class = 'link']")
+  @FindBy(xpath = "//a[@class = 'link']")
   private ExtendedWebElement chainLabel;
 
   public ChainItem(WebDriver driver,

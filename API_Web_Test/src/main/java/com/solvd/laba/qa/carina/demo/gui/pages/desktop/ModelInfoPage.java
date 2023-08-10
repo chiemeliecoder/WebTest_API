@@ -53,13 +53,13 @@ public class ModelInfoPage extends ModelInfoPageBase {
   }
 
   @Override
-  public CartPage shopCart(){
+  public CartPage shopCartIconClicked(){
     shoppingCart.click();
     return new CartPage(driver);
   }
 
   @Override
-  public FullCartPage cartFull(){
+  public FullCartPage viewItemInCart(){
     openUpCart.click();
     return new FullCartPage(driver);
   }

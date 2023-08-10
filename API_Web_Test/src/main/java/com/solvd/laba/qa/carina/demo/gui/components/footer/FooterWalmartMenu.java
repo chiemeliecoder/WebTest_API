@@ -1,5 +1,6 @@
 package com.solvd.laba.qa.carina.demo.gui.components.footer;
 
+import com.solvd.laba.qa.carina.demo.gui.pages.common.FAQPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.AllDepartmentsPage;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.FAQPage;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.StoreDirectoryPage;
@@ -43,10 +44,10 @@ public class FooterWalmartMenu extends FooterWalmartMenuBase{
   }
 
   @Override
-  public FAQPage openFAQPage() throws InterruptedException {
+  public FAQPageBase openFAQPage() throws InterruptedException {
     fAQLink.scrollTo();
     fAQLink.wait(10);
     fAQLink.click();
-    return new FAQPage(driver);
+    return new FAQPage(getDriver());
   }
 }

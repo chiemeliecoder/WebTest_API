@@ -3,6 +3,8 @@ package com.solvd.laba.qa.carina.demo;
 import static org.testng.AssertJUnit.assertEquals;
 
 import com.solvd.laba.qa.carina.demo.gui.components.MerchItem;
+import com.solvd.laba.qa.carina.demo.gui.enums.Category;
+import com.solvd.laba.qa.carina.demo.gui.enums.Product;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CartPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CategoryBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ModelInfoPageBase;
@@ -41,16 +43,14 @@ public class WebSampleTest implements IAbstractTest {
         crunchyHomePageBase.open();
         Assert.assertFalse(crunchyHomePageBase.isPageOpened(), "Crunchyroll Store page is opened");
 
-        String category = "NEW NENDOROIDS";
-        CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(category);
 
-        String model = "Banana Fish - Ash Lynx (Re-run) Nendoroid";
-        ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(model);
+        CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(Category.NEW_NENDOROIDS);
+
+        ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(Product.PRODUCT_2);
 
         SoftAssert softAssert = new SoftAssert();
-        String price = "$36.99";
         softAssert.assertEquals(productInfoPage.readProductName(),"","Invalid product info!");
-        softAssert.assertEquals(productInfoPage.readProductPrice(),price,"Invalid price info!");
+        softAssert.assertEquals(productInfoPage.readProductPrice(),Product.PRODUCT_2.getPrice(),"Invalid price info!");
         softAssert.assertAll();
 
     }
@@ -66,8 +66,7 @@ public class WebSampleTest implements IAbstractTest {
         WishlistProductPageBase wpb = mpb.wishlistProduct();
         wpb.open();
         SoftAssert softAssert = new SoftAssert();
-        String product = "My Hero Academia -Eijiro Kirishima Ichiban Figure ( Bright Future Ver )";
-        softAssert.assertEquals(wpb.readWishlistName(), product, "Invalid name info!");
+        softAssert.assertEquals(wpb.readWishlistName(), Product.PRODUCT_3.getName(), "Invalid name info!");
         softAssert.assertAll();
 
 
@@ -81,17 +80,16 @@ public class WebSampleTest implements IAbstractTest {
         HomePageBase crunchyHomePageBase = initPage(getDriver(), HomePageBase.class);
         crunchyHomePageBase.open();
 
-        String category = "NEW NENDOROIDS";
-        CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(category);
+        CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(Category.NEW_NENDOROIDS);
 
-        String model = "Banana Fish - Ash Lynx (Re-run) Nendoroid";
-        ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(model);
 
-        CartPageBase cPB = productInfoPage.addedToCartItems();
+        ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(Product.PRODUCT_2);
 
-        productInfoPage.shopCart();
+        productInfoPage.addedToCartItems();
 
-        productInfoPage.cartFull();
+        productInfoPage.shopCartIconClicked();
+
+        productInfoPage.viewItemInCart();
 
     }
 
@@ -106,10 +104,11 @@ public class WebSampleTest implements IAbstractTest {
         crunchyHomePageBase.open();
 
         //test wont pass current thread is not owner
-        FAQPageBase f = initPage(getDriver(), FAQPageBase.class);
-        f.open();
+//        FAQPageBase f = initPage(getDriver(), FAQPageBase.class);
+//        f.open();
         //test wont pass current thread is not owner
-//        FAQPage faq = crunchyHomePageBase.getFooterWalmartMenu().openFAQPage();
+        FAQPageBase faq = crunchyHomePageBase.getFooterWalmartMenu().openFAQPage();
+        faq.open();
 //        Assert.assertTrue(faq.isPageOpened(10));
     }
 

@@ -32,12 +32,10 @@ public class NewMobileTest implements IAbstractTest, IMobileUtils {
     final String searchAnimeMerch = "Attack on Titan";
     List<MerchItem> mI = homePageBase.searchMerch(searchAnimeMerch);
     SoftAssert softAssert = new SoftAssert();
-    for(MerchItem merchItem : mI){
-//            System.out.println(merchItem.readProductTitle());
-      softAssert.assertTrue(
-          StringUtils.containsIgnoreCase(merchItem.readProductTitle(), searchAnimeMerch),
-          "Invalid search results for " + merchItem.readProductTitle());
-    }
+    mI.stream().forEach(c->{
+      softAssert.assertTrue(StringUtils.containsIgnoreCase(c.readProductTitle(), searchAnimeMerch),
+          "Invalid search results for " + c.readProductTitle());
+    });
     softAssert.assertAll();
   }
 

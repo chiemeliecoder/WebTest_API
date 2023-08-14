@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CategoryBasePage.class)
 public class CategoryPage extends CategoryBasePage {
 
-  @FindBy(xpath = "//div[contains(@data-pid, '4580590175426')]")
+  @FindBy(xpath = "//div[@class='flex-grow-1 product-items-container']//div[@class='product']")
   public List<ChainItem> categoryProducts;
 
 
@@ -22,12 +22,11 @@ public class CategoryPage extends CategoryBasePage {
 
   @Override
   public ModelInfoPageBase selectModel(String modelName){
-    for (ChainItem model : categoryProducts) {
-      if (model.readModel().equalsIgnoreCase(modelName)) {
+        ChainItem model = categoryProducts.stream()
+        .filter(m -> m.readModel().equalsIgnoreCase(modelName))
+        .findFirst()
+        .orElseThrow(() -> new RuntimeException("Unable to find product model: " + modelName));
         return model.openModelPage();
-      }
-    }
-    throw new RuntimeException("Unable to open product model: " + modelName);
 
   }
 

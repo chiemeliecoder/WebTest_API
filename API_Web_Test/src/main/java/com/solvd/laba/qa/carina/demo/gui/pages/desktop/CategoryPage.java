@@ -34,7 +34,7 @@ public class CategoryPage extends CategoryBasePage {
 
 //    ChainItem model = categoryProducts.stream()
 //        .filter(m -> m.readModel().equalsIgnoreCase(modelName))
-//        .findFirst().get();
+//        .findFirst()
 ////        .orElseThrow(() -> new RuntimeException("Unable to find product model: " + modelName));
 //
 //    return model.openModelPage();

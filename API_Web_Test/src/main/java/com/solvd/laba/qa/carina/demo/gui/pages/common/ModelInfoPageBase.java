@@ -17,9 +17,11 @@ public abstract class ModelInfoPageBase extends AbstractPage {
 
   public abstract CartPageBase addedToCartItems();
 
-  public abstract CartPage shopCartIconClicked();
+  public abstract String getMinicartQuantity();
 
-  public abstract FullCartPage viewItemInCart();
+  public abstract CartPageBase shopCartIconClicked();
+
+  public abstract FullCartPageBase viewItemInCart();
 
 
 }

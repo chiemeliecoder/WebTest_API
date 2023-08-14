@@ -13,10 +13,13 @@ public class ChainItem extends AbstractUIObject implements ICustomTypePageFactor
 //  @FindBy(xpath = "//div[@id='product-search-results']//a")
   // //div[@class='flex-grow-1 product-items-container']//div[@class='product']
   //  //div[@class='product-tile js-product-tile']
-  @FindBy(xpath = "//div[@class='flex-grow-1 product-items-container']//div[@class='product']")
+  ////div[@class='flex-grow-1 product-items-container']//div[@data-pid='4983164177299']
+
+  //to get a specific  model so this class just produces one item you just need to change the pid number and you can check any category
+  @FindBy(xpath = "//div[@class='flex-grow-1 product-items-container']//div[@data-pid='4580590175891']")
   private ExtendedWebElement chainLink;
 
-  @FindBy(xpath = "//a[@class = 'link']")
+  @FindBy(xpath = "//div[@class='flex-grow-1 product-items-container']//div[@data-pid='4580590175891']//a[@class = 'link']")
   private ExtendedWebElement chainLabel;
 
   public ChainItem(WebDriver driver,

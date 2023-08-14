@@ -5,9 +5,14 @@ import com.solvd.laba.qa.carina.demo.gui.pages.desktop.AllDepartmentsPage;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.FAQPage;
 import com.solvd.laba.qa.carina.demo.gui.pages.desktop.StoreDirectoryPage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import java.time.Duration;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FooterWalmartMenu extends FooterWalmartMenuBase{
 
@@ -23,6 +28,10 @@ public class FooterWalmartMenu extends FooterWalmartMenuBase{
 
   public FooterWalmartMenu(WebDriver driver, SearchContext searchContext) {
     super(driver, searchContext);
+  }
+
+  public void scrollToElement(WebElement element) {
+    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
   }
 
   @Override
@@ -44,9 +53,12 @@ public class FooterWalmartMenu extends FooterWalmartMenuBase{
   }
 
   @Override
-  public FAQPageBase openFAQPage() throws InterruptedException {
-    fAQLink.scrollTo();
-    fAQLink.wait(10);
+  public FAQPageBase openFAQPage() {
+    scrollToElement(fAQLink.getElement());
+
+    // Use explicit wait to wait for the element to be clickable
+    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10)); // Wait up to 10 seconds
+    wait.until(ExpectedConditions.elementToBeClickable(fAQLink.getElement()));
     fAQLink.click();
     return new FAQPage(getDriver());
   }

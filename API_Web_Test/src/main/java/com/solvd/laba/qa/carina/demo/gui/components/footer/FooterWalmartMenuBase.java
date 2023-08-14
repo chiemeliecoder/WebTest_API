@@ -16,5 +16,5 @@ public abstract class FooterWalmartMenuBase extends AbstractUIObject {
 
   public abstract AllDepartmentsPageBase openAllDepartmentsPage();
   public abstract StoreDirectoryPageBase openStoreDirectoryPage();
-  public abstract FAQPageBase openFAQPage()throws InterruptedException;
+  public abstract FAQPageBase openFAQPage();
 }

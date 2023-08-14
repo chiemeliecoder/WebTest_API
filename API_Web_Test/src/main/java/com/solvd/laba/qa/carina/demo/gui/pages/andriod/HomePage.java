@@ -1,34 +1,29 @@
-package com.solvd.laba.qa.carina.demo.gui.pages.desktop;
+package com.solvd.laba.qa.carina.demo.gui.pages.andriod;
 
 import com.solvd.laba.qa.carina.demo.gui.components.MerchItem;
 import com.solvd.laba.qa.carina.demo.gui.components.footer.FooterWalmartMenu;
+import com.solvd.laba.qa.carina.demo.gui.components.footer.FooterWalmartMenuBase;
 import com.solvd.laba.qa.carina.demo.gui.enums.Category;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.AllDepartmentsPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CategoryBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.MerchProductPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.StoreDirectoryPageBase;
+import com.solvd.laba.qa.carina.demo.gui.pages.desktop.MerchProductPage;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.Context;
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = HomePageBase.class)
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase {
-
-  private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
-
 
   @FindBy(id = "footercontent")
   private FooterWalmartMenu footerWalmartMenu;
 
-  @FindBy(className = "experience-component experience-commerce_layouts-bannerCarousel")
+  @FindBy(id = "homepage")
   private ExtendedWebElement pageColumn;
 
   @FindBy(xpath = "//div[contains(@class, 'category-block')]//a")
@@ -63,43 +58,36 @@ public class HomePage extends HomePageBase {
   @FindBy(xpath = ".//a[@href = 'https://store.crunchyroll.com/help-center.html']")
   private ExtendedWebElement footerPicks;
 
-
   public HomePage(WebDriver driver) {
     super(driver);
     setUiLoadedMarker(pageColumn);
   }
 
-
   @Override
-  public FooterWalmartMenu getFooterWalmartMenu(){
-    return footerWalmartMenu;
+  public FooterWalmartMenuBase getFooterWalmartMenu() {
+    return null;
   }
 
   @Override
   public AllDepartmentsPageBase openAllDepartments() {
-    return getFooterWalmartMenu().openAllDepartmentsPage();
+    return null;
   }
 
   @Override
   public StoreDirectoryPageBase openStoreDirectory() {
-    return getFooterWalmartMenu().openStoreDirectoryPage();
+    return null;
   }
 
 
-@Override
- public CategoryBasePage selectCategory(Category name){
-   LOGGER.info("selecting '" + name + "' name...");
-   ExtendedWebElement anime = animeLinks.stream().filter(c->c.getText().equals(name.getName())).findFirst().get();
-   anime.click();
-   return initPage(driver, CategoryBasePage.class);
-//   for (ExtendedWebElement anime : animeLinks) {
-//     String currentAnime = anime.getText();
-//     LOGGER.info("currentBrand: " + currentAnime);
-//     anime.click();
-//     return initPage(driver, CategoryBasePage.class);
-//   }
-//   throw new RuntimeException("Unable to open anime name: " + name);
- }
+  @Override
+  public CategoryBasePage selectCategory(Category name) {
+    for (ExtendedWebElement anime : animeLinks) {
+      String currentAnime = anime.getText();
+      anime.click();
+      return initPage(driver, CategoryBasePage.class);
+    }
+    throw new RuntimeException("Unable to open anime name: " + name);
+  }
 
   @Override
   public List<MerchItem> searchMerch(String searchInput) {
@@ -109,11 +97,10 @@ public class HomePage extends HomePageBase {
   }
 
   @Override
-  public MerchProductPageBase navNewItemSelect(){
+  public MerchProductPageBase navNewItemSelect() {
     newItems.hover();
     newItems.click();
     return new MerchProductPage(driver);
   }
-
 
 }

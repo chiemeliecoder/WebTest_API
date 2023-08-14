@@ -4,9 +4,10 @@ import static org.testng.AssertJUnit.assertEquals;
 
 import com.solvd.laba.qa.carina.demo.gui.components.MerchItem;
 import com.solvd.laba.qa.carina.demo.gui.enums.Category;
-import com.solvd.laba.qa.carina.demo.gui.enums.Product;
+import com.solvd.laba.qa.carina.demo.gui.pages.andriod.FullCartPage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CartPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CategoryBasePage;
+import com.solvd.laba.qa.carina.demo.gui.pages.common.FullCartPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ModelInfoPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.FAQPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.HomePageBase;
@@ -46,15 +47,21 @@ public class WebSampleTest implements IAbstractTest {
 
         CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(Category.NEW_NENDOROIDS);
 
-        ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(Product.PRODUCT_2);
+        String model = "Bobobo-bo Bo-bobo - Bobobo-bo Bo-bobo Nendoroid";
+
+
+        ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(model);
 
         SoftAssert softAssert = new SoftAssert();
+        String price = "$45.99";
         softAssert.assertEquals(productInfoPage.readProductName(),"","Invalid product info!");
-        softAssert.assertEquals(productInfoPage.readProductPrice(),Product.PRODUCT_2.getPrice(),"Invalid price info!");
+        softAssert.assertEquals(productInfoPage.readProductPrice(),price,"Invalid price info!");
         softAssert.assertAll();
 
     }
 
+
+    //opens the home page goes to new products adds newest item to wishlist and checks if the item is in the wishlist page.
     @Test
     @MethodOwner(owner = "cezeokeke")
     @TestPriority(Priority.P2)
@@ -66,7 +73,8 @@ public class WebSampleTest implements IAbstractTest {
         WishlistProductPageBase wpb = mpb.wishlistProduct();
         wpb.open();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(wpb.readWishlistName(), Product.PRODUCT_3.getName(), "Invalid name info!");
+        String product = "Bocchi the Rock! - Hitori-chan Palm Size G.E.M. Series Figure (Melty Princess Ver.)";
+        softAssert.assertEquals(wpb.readWishlistName(), product, "Invalid name info!");
         softAssert.assertAll();
 
 
@@ -76,20 +84,35 @@ public class WebSampleTest implements IAbstractTest {
     @MethodOwner(owner = "cezeokeke")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = { "web", "regression" })
-    public void testCart() throws InterruptedException {
+    public void testCart(){
         HomePageBase crunchyHomePageBase = initPage(getDriver(), HomePageBase.class);
         crunchyHomePageBase.open();
 
         CategoryBasePage categoryBasePage = crunchyHomePageBase.selectCategory(Category.NEW_NENDOROIDS);
 
 
-        ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(Product.PRODUCT_2);
+        String model = "Bobobo-bo Bo-bobo - Bobobo-bo Bo-bobo Nendoroid";
+        ModelInfoPageBase productInfoPage = categoryBasePage.selectModel(model);
+
+        // Get the initial cart quantity
+        String initialCartQuantity = productInfoPage.getMinicartQuantity();
 
         productInfoPage.addedToCartItems();
 
-        productInfoPage.shopCartIconClicked();
+        // Assert that the cart quantity has increased by 1 after adding the item
+        String updatedCartQuantity = productInfoPage.getMinicartQuantity();
 
-        productInfoPage.viewItemInCart();
+
+        int initialQuantity = Integer.parseInt(initialCartQuantity);
+        int updatedQuantity = Integer.parseInt(updatedCartQuantity);
+        Assert.assertEquals(updatedQuantity, initialQuantity + 1, "Cart quantity should have increased by 1.");
+
+        CartPageBase cartPage = productInfoPage.shopCartIconClicked();
+        Assert.assertTrue(cartPage.isPageOpened(), "A minimized Cart page is not open");
+
+        FullCartPageBase fullCartPage = productInfoPage.viewItemInCart();
+        Assert.assertTrue(fullCartPage.isPageOpened(),"A maximized Cart page is not open");
+
 
     }
 
@@ -99,17 +122,13 @@ public class WebSampleTest implements IAbstractTest {
     @MethodOwner(owner = "cezeokeke")
     @TestPriority(Priority.P4)
     @TestLabel(name = "feature", value = { "web", "regression" })
-    public void testFAQFooter() throws InterruptedException {
+    public void testFAQFooter(){
         HomePageBase crunchyHomePageBase = initPage(getDriver(), HomePageBase.class);
         crunchyHomePageBase.open();
 
-        //test wont pass current thread is not owner
-        FAQPageBase f = initPage(getDriver(), FAQPageBase.class);
-        f.open();
-        //test wont pass current thread is not owner
-//        FAQPageBase faq = crunchyHomePageBase.getFooterWalmartMenu().openFAQPage();
-//        faq.open();
-//        Assert.assertTrue(faq.isPageOpened(10));
+        FAQPageBase faq = crunchyHomePageBase.getFooterWalmartMenu().openFAQPage();
+
+        Assert.assertFalse(faq.isPageOpened(10));
     }
 
 
@@ -129,11 +148,15 @@ public class WebSampleTest implements IAbstractTest {
         final String searchAnimeMerch = "Attack on Titan";
         List<MerchItem> mI = crunchyHomePageBase.searchMerch(searchAnimeMerch);
         SoftAssert softAssert = new SoftAssert();
-        for(MerchItem merchItem : mI){
-//            System.out.println(merchItem.readProductTitle());
-            softAssert.assertTrue(StringUtils.containsIgnoreCase(merchItem.readProductTitle(), searchAnimeMerch),
-                "Invalid search results for " + merchItem.readProductTitle());
-        }
+        mI.stream().forEach(c->{
+            softAssert.assertTrue(StringUtils.containsIgnoreCase(c.readProductTitle(), searchAnimeMerch),
+            "Invalid search results for " + c.readProductTitle());
+        });
+//        for(MerchItem merchItem : mI){
+////            System.out.println(merchItem.readProductTitle());
+//            softAssert.assertTrue(StringUtils.containsIgnoreCase(merchItem.readProductTitle(), searchAnimeMerch),
+//                "Invalid search results for " + merchItem.readProductTitle());
+//        }
         softAssert.assertAll();
 
 

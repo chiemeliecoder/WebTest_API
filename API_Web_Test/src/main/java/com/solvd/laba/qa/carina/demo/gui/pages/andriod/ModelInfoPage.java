@@ -1,22 +1,19 @@
-package com.solvd.laba.qa.carina.demo.gui.pages.desktop;
+package com.solvd.laba.qa.carina.demo.gui.pages.andriod;
 
 
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CartPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.FullCartPageBase;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ModelInfoPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.utils.factory.DeviceType.Type;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ModelInfoPageBase.class)
+@DeviceType(pageType = Type.ANDROID_PHONE, parentClass = ModelInfoPageBase.class)
 public class ModelInfoPage extends ModelInfoPageBase {
 
-  //css = ".product-name-block h1"
-  //xpath = "//div[@class = 'product-name-block']//h1[@class = 'product-name']"
-  @FindBy(xpath = "//div[@class = 'product-name-block']//h1[@class = 'product-name']")
+  @FindBy(css = ".product-name-block h1")
   private ExtendedWebElement productInfoLabel;
 
   @FindBy(css = ".sales span")
@@ -33,9 +30,6 @@ public class ModelInfoPage extends ModelInfoPageBase {
 
   @FindBy(xpath = "//div[@class = 'minicart-icon']/a")
   private ExtendedWebElement shoppingCart;
-
-  ////div[@class ='minicart-icon']//span[@class = 'minicart-quantity ml-1']
-  private By minicartQuantityLocator = By.xpath("//div[@class='minicart-icon']//span[@class='minicart-quantity ml-1']");
 
   public ModelInfoPage(WebDriver driver) {
     super(driver);
@@ -60,9 +54,9 @@ public class ModelInfoPage extends ModelInfoPageBase {
     return new CartPage(driver);
   }
 
+  @Override
   public String getMinicartQuantity() {
-    WebElement minicartQuantityElement = getDriver().findElement(minicartQuantityLocator);
-    return minicartQuantityElement.getText();
+    return null;
   }
 
   @Override
@@ -72,11 +66,10 @@ public class ModelInfoPage extends ModelInfoPageBase {
   }
 
   @Override
+  //fix: change them all to base page
   public FullCartPageBase viewItemInCart(){
     openUpCart.click();
     return new FullCartPage(driver);
   }
-
-
 
 }

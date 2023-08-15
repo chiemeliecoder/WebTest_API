@@ -5,6 +5,7 @@ import com.solvd.laba.qa.carina.demo.gui.pages.common.WishlistProductPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -24,4 +25,6 @@ public class WishlistProductPage extends WishlistProductPageBase {
     assertElementPresent(wishlistItemLabel);
     return wishlistItemLabel.getText();
   }
+
+
 }

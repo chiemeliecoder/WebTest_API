@@ -1,6 +1,7 @@
 package com.solvd.laba.qa.carina.demo.gui.pages.andriod;
 
 import com.solvd.laba.qa.carina.demo.gui.components.ChainItem;
+import com.solvd.laba.qa.carina.demo.gui.components.ProductItem;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CategoryBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ModelInfoPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
@@ -31,8 +32,18 @@ public class CategoryPage extends CategoryBasePage {
   }
 
   @Override
+  public ModelInfoPageBase selectRandomModel(String modelName) {
+    return null;
+  }
+
+  @Override
   public List<ChainItem> getChainsawManProducts() {
     return categoryProducts;
+  }
+
+  @Override
+  public List<ProductItem> getProductList() {
+    return null;
   }
 
 

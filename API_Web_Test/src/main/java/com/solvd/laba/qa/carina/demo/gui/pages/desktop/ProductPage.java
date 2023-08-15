@@ -9,24 +9,27 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductPageBase.class)
 public class ProductPage extends ProductPageBase {
 
-  @FindBy(css = ".help-camera strong")
+  @FindBy(xpath = ".//div[@class = 'product-name-block']/h1")
   private ExtendedWebElement nameInfoLabel;
 
 
-  @FindBy(css = ".help-camera strong")
+  @FindBy(xpath = ".//span[@class = 'value']")
   private ExtendedWebElement priceInfoLabel;
 
   public ProductPage(WebDriver driver) {
     super(driver);
   }
 
-  public String readName(){
-    assertElementPresent(nameInfoLabel);
+
+  @Override
+  public String getProductName(){
+    //assertElementPresent(nameInfoLabel);
     return nameInfoLabel.getText();
   }
 
-  public String readPrice(){
-    assertElementPresent(priceInfoLabel);
+  @Override
+  public String getProductPrice(){
+    //assertElementPresent(priceInfoLabel);
     return priceInfoLabel.getText();
   }
 }

@@ -22,7 +22,7 @@ public class GenrePage extends GenrePageBase {
   @Override
   public ProductPageBase selectProduct(String productName){
     for(ProductItem product : products){
-      if(product.readProductLabel().equalsIgnoreCase(productName)){
+      if(product.getProductLabel().equalsIgnoreCase(productName)){
         return product.openProductPage();
       }
     }

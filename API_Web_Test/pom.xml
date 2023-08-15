@@ -115,7 +115,13 @@
 			<version>7.6.1</version>
 			<scope>test</scope>
 		</dependency>
-<!--		<dependency>-->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.6.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <!--		<dependency>-->
 <!--			<groupId>org.testng</groupId>-->
 <!--			<artifactId>testng</artifactId>-->
 <!--			<version>RELEASE</version>-->

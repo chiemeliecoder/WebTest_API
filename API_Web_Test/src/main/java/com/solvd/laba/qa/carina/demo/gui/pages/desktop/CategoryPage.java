@@ -1,6 +1,7 @@
 package com.solvd.laba.qa.carina.demo.gui.pages.desktop;
 
 import com.solvd.laba.qa.carina.demo.gui.components.ChainItem;
+import com.solvd.laba.qa.carina.demo.gui.components.ProductItem;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.CategoryBasePage;
 import com.solvd.laba.qa.carina.demo.gui.pages.common.ModelInfoPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
@@ -19,6 +20,11 @@ public class CategoryPage extends CategoryBasePage {
   @FindBy(xpath = "//div[@class='flex-grow-1 product-items-container']//div[@class='product']")
   public List<ChainItem> categoryProducts;
 
+  @FindBy(xpath = ".//div[@class='product']")
+  public List<ProductItem> productItems;
+
+  @FindBy(xpath = ".//h1[@class = 'product-name']")
+  public List<ProductItem> oneProductItem;
 
 
 
@@ -27,10 +33,7 @@ public class CategoryPage extends CategoryBasePage {
   }
 
   public ModelInfoPageBase selectModel(String modelName){
-    /**fix: let try and see if we use a different xpath here it would work(we need a container)
-     * we may have to use this findExtendedWebElements(By.xpath(//div[contains(@class, 'category-block')]/a))
-     * we would need to edit categoryProducts
-     * **/
+
 
 //    ChainItem model = categoryProducts.stream()
 //        .filter(m -> m.readModel().equalsIgnoreCase(modelName))
@@ -48,11 +51,28 @@ public class CategoryPage extends CategoryBasePage {
 
   }
 
+  public ModelInfoPageBase selectRandomModel(String modelName){
+
+    for (ProductItem model : oneProductItem) {
+      System.out.println(model.readModel());
+      if (model.readModel().equalsIgnoreCase(modelName)) {
+        return initPage(driver, ModelInfoPageBase.class);
+      }
+    }
+    throw new RuntimeException("Unable to open product model: " + modelName);
+
+  }
+
 
   @Override
   public List<ChainItem> getChainsawManProducts() {
 
     return categoryProducts;
+  }
+
+  @Override
+  public List<ProductItem> getProductList() {
+    return productItems;
   }
 
 

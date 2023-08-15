@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -193,6 +194,10 @@ public class WebSampleTest implements IAbstractTest {
     @TestPriority(Priority.P5)
     @TestLabel(name = "feature", value = { "web", "regression" })
     public void testFAQFooter(){
+
+        // Set the browser window size
+        getDriver().manage().window().maximize();
+
         HomePageBase crunchyHomePageBase = initPage(getDriver(), HomePageBase.class);
         crunchyHomePageBase.open();
 

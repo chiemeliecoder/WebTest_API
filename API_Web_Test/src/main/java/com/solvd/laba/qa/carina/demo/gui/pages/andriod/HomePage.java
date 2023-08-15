@@ -65,28 +65,25 @@ public class HomePage extends HomePageBase {
 
   @Override
   public FooterWalmartMenuBase getFooterWalmartMenu() {
-    return null;
+    return footerWalmartMenu;
   }
 
   @Override
   public AllDepartmentsPageBase openAllDepartments() {
-    return null;
+    return getFooterWalmartMenu().openAllDepartmentsPage();
   }
 
   @Override
   public StoreDirectoryPageBase openStoreDirectory() {
-    return null;
+    return getFooterWalmartMenu().openStoreDirectoryPage();
   }
 
 
   @Override
   public CategoryBasePage selectCategory(Category name) {
-    for (ExtendedWebElement anime : animeLinks) {
-      String currentAnime = anime.getText();
-      anime.click();
-      return initPage(driver, CategoryBasePage.class);
-    }
-    throw new RuntimeException("Unable to open anime name: " + name);
+    ExtendedWebElement anime = animeLinks.stream().filter(c->c.getText().equals(name.getName())).findFirst().get();
+    anime.click();
+    return initPage(driver, CategoryBasePage.class);
   }
 
   @Override

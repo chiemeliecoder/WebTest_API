@@ -59,7 +59,9 @@ public class FooterWalmartMenu extends FooterWalmartMenuBase{
     // Use explicit wait to wait for the element to be clickable
     WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10)); // Wait up to 10 seconds
     wait.until(ExpectedConditions.elementToBeClickable(fAQLink.getElement()));
-    fAQLink.click();
+    JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+    executor.executeScript("arguments[0].click();", fAQLink.getElement());
+//    fAQLink.click();
     return new FAQPage(getDriver());
   }
 }

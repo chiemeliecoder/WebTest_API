@@ -60,9 +60,7 @@ public class ProductItem extends AbstractUIObject implements ICustomTypePageFact
       // Handle the exception here
       System.out.println("ElementClickInterceptedException occurred. Handling it...");
 
-      // You can implement any appropriate logic here, such as scrolling, waiting, or clicking a different element
-
-      // Then, attempt the click again
+      // Then, click again
       productLabel.click();
     }
     //productLabel.click();
@@ -103,9 +101,7 @@ public class ProductItem extends AbstractUIObject implements ICustomTypePageFact
       // Handle the exception here
       System.out.println("ElementClickInterceptedException occurred. Handling it...");
 
-      // You can implement any appropriate logic here, such as scrolling, waiting, or clicking a different element
-
-      // Then, attempt the click again
+      // Then, click again
       productLabel.click();
     }
     return initPage(driver, ModelInfoPageBase.class);

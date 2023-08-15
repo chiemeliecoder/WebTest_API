@@ -16,6 +16,12 @@ public class CategoryPage extends CategoryBasePage {
   @FindBy(xpath = "//div[@class='flex-grow-1 product-items-container']//div[@class='product']")
   public List<ChainItem> categoryProducts;
 
+  @FindBy(xpath = ".//h1[@class = 'product-name']")
+  public List<ProductItem> oneProductItem;
+
+  @FindBy(xpath = ".//div[@class='product']")
+  public List<ProductItem> productItems;
+
 
   public CategoryPage(WebDriver driver) {
     super(driver);
@@ -33,7 +39,13 @@ public class CategoryPage extends CategoryBasePage {
 
   @Override
   public ModelInfoPageBase selectRandomModel(String modelName) {
-    return null;
+    for (ProductItem model : oneProductItem) {
+      System.out.println(model.readModel());
+      if (model.readModel().equalsIgnoreCase(modelName)) {
+        return initPage(driver, ModelInfoPageBase.class);
+      }
+    }
+    throw new RuntimeException("Unable to open product model: " + modelName);
   }
 
   @Override
@@ -43,7 +55,7 @@ public class CategoryPage extends CategoryBasePage {
 
   @Override
   public List<ProductItem> getProductList() {
-    return null;
+    return productItems;
   }
 
 
